@@ -5,7 +5,7 @@ Also we will show the visualization of all the users' review.
 The original data set is not uploaded as it exceeds the maximum file size.
 
 ## data preprocessing
-divide the big data set to several small data sets depends on the purpose of the renting
+1. find_purposes() to observe how many types of renting purposes
     The number of tuples does not have the key-"rented for":  10 (eliminated)
     The "rented for" dictionary from original data set:
     purpose     count
@@ -18,6 +18,15 @@ divide the big data set to several small data sets depends on the purpose of the
     'everyday': 16822, 
     'work': 15042, 
     'party: cocktail': 1 (eliminated)
+2. divide the big data set to several small data sets depends on the purpose of the renting
+3. create all the data files based on the renting purpose.
 
-## centered cosine similarity 
-1. 
+## centered cosine similarity
+1. Convert the values in the attributes "height" "weight" "size" to CM unit
+2. generate the cosine similarity files for each renting purpose.
+
+## experiment
+1. weight the cosine similarity and "age"
+2. get top 10 recommendations
+3. compare our prediction to the real data, e.g., is one of the top 10 same as the real data?
+4. the accuracy
