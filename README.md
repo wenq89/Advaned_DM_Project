@@ -37,6 +37,5 @@ available values in a certain tuple
 
 ## experiment
 1. weight the cosine similarity and "age"
-2. get top 10 recommendations
-3. compare our prediction to the real data, e.g., is one of the top 10 same as the real data?
-4. the accuracy
+2. get top 10 recommendations and demonstrate to the users.
+3. did the user actually buy it in the real data?

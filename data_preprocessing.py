@@ -103,6 +103,8 @@ def cos_sim_file_generator():
                 data["age"] = int(data["age"])
 
             new_data = {
+                "user_id": data["user_id"],
+                "item_id": data["item_id"],
                 "height": data["height"],
                 "weight": data["weight"],
                 "body_size": data["size"],

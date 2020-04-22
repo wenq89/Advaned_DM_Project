@@ -1,9 +1,12 @@
 # personal information normalization
+import copy
+
 def info_normalization(user_info):
-    user_info["height"] = get_height(user_info["height"])
-    user_info["weight"] = get_weight(user_info["weight"])
-    user_info["body_size"] = get_size(user_info["body_size"])
-    return user_info
+    user_normalized_info = copy.deepcopy(user_info)
+    user_normalized_info["height"] = get_height(user_info["height"])
+    user_normalized_info["weight"] = get_weight(user_info["weight"])
+    user_normalized_info["body_size"] = get_size(user_info["body_size"])
+    return user_normalized_info
 
 def get_height(h):
     if h <= 140:
