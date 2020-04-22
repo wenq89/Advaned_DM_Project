@@ -4,6 +4,10 @@ Then our RS(recommender system) which output top 10 products that match the user
 Also we will show the visualization of all the users' review.
 The original data set is not uploaded as it exceeds the maximum file size.
 
+file info: 
+max_height, max_w, min_height, min_w
+198.12 300 137.16 50
+
 ## data preprocessing
 1. find_purposes() to observe how many types of renting purposes, and find the cells with
     missing values: # of tuples with no height: 677, # of tuples with no weight 29982

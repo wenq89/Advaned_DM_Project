@@ -8,18 +8,6 @@ HEIGHT = {
     'INCH': 2.54,
 }
 
-SIZE = {
-    8: 81,
-    10: 86,
-    12: 91.5,
-    14: 96.5,
-    16: 101.5,
-    18: 106.5,
-    20: 112,
-    22: 117
-}
-
-
 # missing data in any categories? - to decide COSINE OR CENTERED COSINE
 def find_purposes():
     # example = [{'rented for': 'party', 'count': 0}]
@@ -58,7 +46,15 @@ def purpose_files(rent_type, rent_data):
 
 
 def cos_sim_file_generator():
-    for filename in FILE_LIST:
+    max_height = 150
+    min_height = 150
+    max_w = 100
+    min_w = 100
+    # max_size = 0
+    # min_size = 0
+    filename = "date"
+    if filename in FILE_LIST:
+
         for line in open('files_purposes/'+filename+'.json', 'r'):
             data = json.loads(line)
             if "height" not in data:
@@ -69,20 +65,37 @@ def cos_sim_file_generator():
                 inch_cm = float(arr_h[1].replace('\"', ''))*HEIGHT["INCH"]
                 data["height"] = round(feet_cm+inch_cm,2)
 
+            if data["height"]<min_height and data["height"] != 0:
+                min_height = data["height"]
+            if data["height"]>max_height:
+                max_height = data["height"]
+
             if "weight" not in data:
                 data["weight"] = 0
             else:
                 data["weight"] = int(data["weight"].replace('lbs', ''))
 
+            if data["weight"]<min_w and data["weight"] != 0:
+                min_w = data["weight"]
+            if data["weight"]>max_w:
+                max_w = data["weight"]
+
             # the reference of size to centimeter is from https://www.belladinotte.com/fitting
-            body_size = data["size"]
-            if body_size > 22 or body_size < 8:
+            # body_size = data["size"]
+            # if body_size > 22 or body_size < 8:
+            #     data["size"] = 0
+            # else:
+            #     if body_size % 2 == 0:
+            #         data["size"] = SIZE[body_size]
+            #     else:
+            #         data["size"] = SIZE[body_size-1]
+            #
+            if type(data["size"]) is not int:
+                # print(data["size"])
                 data["size"] = 0
-            else:
-                if body_size % 2 == 0:
-                    data["size"] = SIZE[body_size]
-                else:
-                    data["size"] = SIZE[body_size-1]
+            #     min_size = data["size"]
+            # if data["size"]>max_size:
+            #     max_size = data["size"]
 
             if "age" not in data:
                 data["age"] = 0
@@ -97,8 +110,11 @@ def cos_sim_file_generator():
             }
 
             cos_sim_files(filename, new_data)
+
+        print(max_height, max_w, min_height, min_w) # , , min_size, max_size
         print("End of " + filename + " file generation\n")
 
+    print(max_height, max_w, min_height, min_w) # , min_size, max_size
     print("End of all cos_sim_files generation\n")
 
 
