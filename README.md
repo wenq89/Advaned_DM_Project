@@ -5,7 +5,8 @@ Also we will show the visualization of all the users' review.
 The original data set is not uploaded as it exceeds the maximum file size.
 
 ## data preprocessing
-1. find_purposes() to observe how many types of renting purposes
+1. find_purposes() to observe how many types of renting purposes, and find the cells with
+    missing values: # of tuples with no height: 677, # of tuples with no weight 29982
     The number of tuples does not have the key-"rented for":  10 (eliminated)
     The "rented for" dictionary from original data set:
     purpose     count
@@ -20,10 +21,15 @@ The original data set is not uploaded as it exceeds the maximum file size.
     'party: cocktail': 1 (eliminated)
 2. divide the big data set to several small data sets depends on the purpose of the renting
 3. create all the data files based on the renting purpose.
+4. Convert the values in the attributes "height" "weight" "size" to CM unit
+3. create all the cosine similarity-based table and store in the json files 
 
 ## centered cosine similarity
-1. Convert the values in the attributes "height" "weight" "size" to CM unit
-2. generate the cosine similarity files for each renting purpose.
+Traditional cosine similarity treat missing cells as 0, but we have missing values: # of tuples with no height: 677, # of tuples with no weight 29982
+thus, we use centered cosine similarity where we treat the missing values as the average of all the
+available values in a certain tuple
+
+- generate the cosine similarity files for each renting purpose.
 
 ## experiment
 1. weight the cosine similarity and "age"

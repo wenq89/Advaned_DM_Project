@@ -10,7 +10,7 @@ dict = {}
 list = []
 count = 0
 summ = 0
-for line in open('files/renttherunway_final_data.json', 'r'):
+for line in open('files_purposes/renttherunway_final_data.json', 'r'):
    # player = json.loads(line)
    # c = Counter(player["item_id"] for player in json_obj)
    a = json.loads(line)
