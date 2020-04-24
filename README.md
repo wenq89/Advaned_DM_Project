@@ -38,4 +38,4 @@ available values in a certain tuple
 ## experiment
 1. weight the cosine similarity and "age"
 2. get top 10 recommendations and demonstrate to the users.
-3. did the user actually buy it in the real data?
+3. did the user actually buy it in the real data??
